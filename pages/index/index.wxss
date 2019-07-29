@@ -1,1 +1,3 @@
-/* pages/index/index.wxss */
+.index_swiper swiper {
+  height: 340rpx;
+}

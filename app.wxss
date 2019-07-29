@@ -1,1 +1,15 @@
-@import './styles/iconfont.wxss'
+@import './styles/iconfont.wxss';
+
+page, view, text, swiper, swiper-item, image, navigator, input, button {
+  box-sizing: border-box;
+}
+
+image {
+  width: 100%;
+}
+page {
+  /* 定义主题颜色变量 */
+  --themeColor: #eb4450;
+  color: #666;
+  font-size: 28rpx;
+}
