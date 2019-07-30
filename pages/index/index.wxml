@@ -2,7 +2,7 @@
 <SearchInput></SearchInput>
 <!-- 轮播图 -->
 <view class="index_swiper">
-  <swiper indicator-dots autoplay interval="2000" circular
+  <swiper indicator-dots autoplay interval="3000" circular 
   indicator-color="rgba(0,0,0,.2)" 
   indicator-active-color="#be1aa7">
     <swiper-item 
@@ -13,4 +13,10 @@
       </navigator>
     </swiper-item>
   </swiper>
+</view>
+<!-- 分类导航 -->
+<view class="index_cate">
+  <navigator wx:for="{{cateList}}" wx:key="name">
+    <image mode="widthFix" src="{{item.image_src}}" />
+  </navigator>
 </view>
