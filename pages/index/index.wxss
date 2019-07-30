@@ -10,3 +10,29 @@
   flex: 1;
   padding: 20rpx 30rpx;
 }
+/* 楼层 */
+.index_floor .floor_item .floor_title {
+  background-color: #999;
+}
+.index_floor .floor_item .floor_list {
+  padding: 10rpx 20rpx 20rpx;
+  background-color: #fff;
+  overflow: hidden;
+}
+.index_floor .floor_item .floor_list navigator {
+  float: left;
+  width: 33.33%;
+}
+.index_floor .floor_item .floor_list navigator:first-child {
+  height: 415.94827586rpx;
+}
+.index_floor .floor_item .floor_list navigator:nth-last-child(-n+4) {
+  height: 207.97413793rpx;
+  border-left: 10rpx solid #fff;
+}
+.index_floor .floor_item .floor_list navigator:nth-last-child(-n+2) {
+  border-top: 10rpx solid #fff;
+}
+.index_floor .floor_item .floor_list navigator image {
+  height: 100%;
+}
