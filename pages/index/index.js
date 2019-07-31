@@ -50,7 +50,7 @@ Page({
     request({
       url: '/home/floordata'
     }).then((result) => {
-      console.log(result);
+      // console.log(result);
       this.setData({
         floorList: result
       })

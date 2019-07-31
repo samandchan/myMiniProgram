@@ -1,0 +1,52 @@
+/* pages/category/index.wxss */
+.cate_container {
+  display: flex;
+  height: ~"calc(100vh - 90rpx)";
+  .left_menu {
+    flex: 1;
+    .menu_item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 80rpx;
+      font-size: 28rpx;
+      background-color: #f4f4f4;
+    }
+    .active {
+      color:var(--themeColor);
+      background-color: #fff;
+      font-weight: 600;
+    }
+  }
+  /* 右侧 */
+  .right_content {
+    flex: 3;
+    .goods_group {
+      .goods_title {
+        text-align: center;
+        padding: 20rpx 0;
+        .delimiter {
+          color: #ccc;
+        }
+        .goods_name {
+          font-size: 28rpx;
+          padding: 20rpx;
+        }
+      }
+    }
+    .goods_list {
+      display: flex;
+      flex-wrap: wrap;
+      navigator {
+        width: 33.33%;
+        text-align: center;
+        image {
+          width: 50%;
+        }
+        view {
+          font-size: 24rpx;
+        }
+      }
+    }
+  }
+}
