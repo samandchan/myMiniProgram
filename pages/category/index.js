@@ -20,7 +20,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getCategoryList()
+    const cateData = wx.getStorageSync('cates');
+      if(!cateData) {
+        this.getCategoryList()
+      }else {
+        if(Date.now() - cateData.time > 1000*10) {
+          this.getCategoryList()
+        }else {
+          this.cates = cateData.data
+          const leftMenuList = this.cates.map(v => ({cat_id: v.cat_id, cat_name: v.cat_name}))
+          const rightGoodsList = this.cates[0].children
+          this.setData({
+            leftMenuList,
+            rightGoodsList
+          })
+        }
+      }
+    
   },
   // 获取分类数据方法
   getCategoryList() {
@@ -31,9 +47,10 @@ Page({
       const leftMenuList = result.map(v => ({ cat_id: v.cat_id, cat_name: v.cat_name }))
       const rightGoodsList = result[0].children
       this.cates = result
+      wx.setStorageSync('cates', {time: Date.now(), data: result});
       this.setData({
         leftMenuList,
-        rightGoodsList,
+        rightGoodsList
       })
     })
   },

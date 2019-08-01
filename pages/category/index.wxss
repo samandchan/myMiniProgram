@@ -19,6 +19,7 @@
   color: var(--themeColor);
   background-color: #fff;
   font-weight: 600;
+  border-left: 4rpx solid var(--themeColor);
 }
 .cate_container .right_content {
   flex: 3;
