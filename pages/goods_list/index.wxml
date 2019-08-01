@@ -1,2 +1,6 @@
-<!--pages/goods_list/index.wxml-->
-<text>pages/goods_list/index.wxml</text>
+<Tabs tabsdata="{{tabs}}"
+binditemChange="handleItemChange">
+  <block wx:if="{{tabs[0].isActive}}">123</block>
+  <block wx:elif="{{tabs[1].isActive}}">456</block>
+  <block wx:elif="{{tabs[2].isActive}}">789</block>
+</Tabs>
