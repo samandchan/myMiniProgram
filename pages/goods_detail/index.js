@@ -1,9 +1,11 @@
 import {request} from '../../request/index.js'
 import regeneratorRuntime from '../../lib/runtime/runtime'
+import { getStorageCart, setStorageCart } from '../../utils/storage.js'
 Page({
   data: {
     goodsInfo: {}
   },
+  goodsObj: {},
   onLoad(options) {
     // console.log(options);
     this.getGoodsInfo(options.goods_id)
@@ -14,6 +16,7 @@ Page({
       url: '/goods/detail',
       data: {goods_id}
     })
+    this.goodsObj = result;
     // console.log(result);
     this.setData({
       goodsInfo: {
@@ -33,8 +36,23 @@ Page({
       current: urls[index],
       urls
     });
-    
+  },
+  // 加入购物车
+  handleAddCart() {
+    let cart = getStorageCart() || {}
+    if(cart[this.goodsObj.goods_id]) {
+      // 已存在购物车
+      cart[this.goodsObj.goods_id].num++
+    }else {
+      // 还没存在购物车
+      cart[this.goodsObj.goods_id] = this.goodsObj
+      cart[this.goodsObj.goods_id].num = 1
+    }
+    setStorageCart(cart)
+    wx.showToast({
+      title: '成功加入购物车',
+      mask: true
+    });
   }
-
 
 })

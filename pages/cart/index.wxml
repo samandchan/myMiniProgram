@@ -1,2 +1,7 @@
-<!--pages/cart/index.wxml-->
-<text>pages/cart/index.wxml</text>
+<view class="cart_wrap">
+  <view class="address">
+    <button wx:if="{{!address.all}}" bindtap="handleChooseAddress">+添加收货地址</button>
+    <view wx:else>{{address.all}}</view>
+  </view>
+  
+</view>
