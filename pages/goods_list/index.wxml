@@ -4,9 +4,10 @@
 binditemChange="handleItemChange">
   <block wx:if="{{tabs[0].isActive}}">
     <view class="goods_list_composite">
-      <view class="goods_group"
+      <navigator class="goods_group"
       wx:for="{{goodsList}}"
-      wx:key="goods_id">
+      wx:key="goods_id"
+      url="/pages/goods_detail/index?goods_id={{item.goods_id}}">
         <view class="goods_img_wrap">
           <image src="{{item.goods_small_logo || 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=686516802,2403556179&fm=15&gp=0.jpg'}}" />
         </view>
@@ -18,7 +19,7 @@ binditemChange="handleItemChange">
             ￥{{item.goods_price}}
           </view>
         </view>
-      </view>
+      </navigator>
     </view>
   </block>
   <block wx:elif="{{tabs[1].isActive}}">456</block>

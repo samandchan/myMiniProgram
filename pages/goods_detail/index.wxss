@@ -1,1 +1,10 @@
-/* pages/goods_detail/index.wxss */
+/* 轮播图 */
+.detail_swiper swiper {
+  height: 50vw;
+  text-align: center;
+  background-color: pink;
+}
+.detail_swiper swiper image {
+  width: 50%;
+  height: 100%;
+}
