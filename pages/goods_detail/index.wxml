@@ -8,3 +8,21 @@
     </swiper-item>
   </swiper>
 </view>
+<!-- 商品价格 -->
+<view class="goods_price">￥{{goodsInfo.goods_price}}</view>
+<!-- 商品名称 -->
+<view class="goods_name_wrap">
+  <view class="goods_name">{{goodsInfo.goods_name}}</view>
+  <view class="goods_collect_wrap">
+    <text class="iconfont icon-shoucang"></text>
+    <view class="goods_collect_name">收藏</view>
+  </view>
+</view>
+<!-- 图文详情 -->
+<view class="goods_detail">
+  <view class="goods_detail_title">图文详情</view>
+  <view class="goods_detail_content">
+    <rich-text nodes="{{goodsInfo.goods_introduce}}"></rich-text>
+  </view>
+</view>
+

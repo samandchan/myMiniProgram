@@ -8,3 +8,43 @@
   width: 50%;
   height: 100%;
 }
+/* 商品价格 */
+.goods_price {
+  color: var(--themeColor);
+  font-weight: 600;
+  font-size: 36rpx;
+  padding: 10rpx;
+}
+/* 商品名称 */
+.goods_name_wrap {
+  display: flex;
+  padding: 10rpx 0;
+  border-bottom: 6rpx solid #f4f4f4;
+}
+.goods_name_wrap .goods_name {
+  flex: 4;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  padding: 0 10rpx;
+  font-size: 28rpx;
+}
+.goods_name_wrap .goods_collect_wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex: 1;
+  border-left: 1px solid #ddd;
+  font-size: 28rpx;
+}
+.goods_name_wrap .goods_collect_wrap .iconfont {
+  font-size: 40rpx;
+}
+/* 图文详情 */
+.goods_detail .goods_detail_title {
+  color: var(--themeColor);
+  font-weight: 600;
+  padding: 20rpx 0 20rpx 10rpx;
+}
