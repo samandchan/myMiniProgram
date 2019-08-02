@@ -1,12 +1,10 @@
-// pages/goods_list/index.js
+import {
+  request
+} from '../../request/index.js'
+import regeneratorRuntime from '../../lib/runtime/runtime.js'
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    tabs: [
-      {
+    tabs: [{
         id: 0,
         title: '综合',
         isActive: true
@@ -21,74 +19,83 @@ Page({
         title: '价格',
         isActive: false
       }
-    ]
+    ],
+    goodsList: [],
   },
+  // 请求接口用参数
+  QueryParams: {
+    query: '',
+    cid: '',
+    pagenum: 1,
+    pagesize: 10
+  },
+  // 总页数
+  totalPages: 1,
   // 子组件触发的事件
   handleItemChange(e) {
     // console.log(e);
-    const { index } = e.detail
-    const  tabs  = this.data.tabs
+    const {
+      index
+    } = e.detail
+    const tabs = this.data.tabs
     tabs.forEach((v, i) => {
-      index === i? v.isActive = true : v.isActive = false
+      index === i ? v.isActive = true : v.isActive = false
     })
     this.setData({
       tabs
     })
   },
-  
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
   onLoad: function (options) {
-
+    // console.log(options);
+    const {
+      cid
+    } = options
+    this.QueryParams.cid = cid
+    this.getGoodsList()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  // 获取商品列表数据
+  async getGoodsList() {
+    // request({
+    //   url: '/goods/search',
+    //   data: this.QueryParams
+    // }).then((result) => {
+    //   // console.log(result);
+    //   // 计算总页数
+    //   this.totalPages = Math.ceil(result.total / this.QueryParams.pagesize)
+    //   this.setData({
+    //     goodsList: [...this.data.goodsList, ...result.goods]
+    //   })
+    //   wx.stopPullDownRefresh()
+    // })
+    const  result = await request({
+      url: '/goods/search',
+      data: this.QueryParams
+    })
+    this.totalPages = Math.ceil( result.total / this.QueryParams.pagesize )
+    this.setData({
+      goodsList: [...this.data.goodsList, ...result.goods]
+    })
+    wx.stopPullDownRefresh()
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  // 上滑下一页
+  onReachBottom() {
+    if (this.QueryParams.pagenum >= this.totalPages) {
+      wx.showToast({
+        title: '没有更多数据了',
+        icon: 'none',
+      })
+    } else {
+      this.QueryParams.pagenum++
+      this.getGoodsList()
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  // 下拉刷新
+  onPullDownRefresh() {
+    this.QueryParams.pagenum = 1
+    this.setData({
+      goodsList: []
+    })
+    this.getGoodsList()
   }
 })

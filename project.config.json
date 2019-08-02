@@ -58,9 +58,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "商品列表",
 					"pathName": "pages/goods_list/index",
+					"query": "cid=5",
 					"scene": null
 				}
 			]

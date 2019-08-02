@@ -1,0 +1,38 @@
+/* 综合 */
+.goods_list_composite {
+  .goods_group {
+    display: flex;
+    box-sizing: content-box;
+    height: 750rpx / 3;
+    // padding: 20rpx 0;
+    border-bottom: 1px solid #f4f4f4;
+    // background-color: pink;
+    .goods_img_wrap {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      image {
+        width: 80%;
+        height: 80%;
+      }
+    }
+    .goods_info_wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      flex: 2;
+      .goods_name {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        -webkit-line-clamp:2;
+        font-size: 24rpx;
+      }
+      .goods_price {
+        color: var(--themeColor);
+        font-weight: 600;
+      }
+    }
+  }
+}

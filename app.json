@@ -15,7 +15,7 @@
     "pages/pay/index" 
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#eb4450",
     "navigationBarTitleText": "黑马优购U",
     "navigationBarTextStyle": "white"

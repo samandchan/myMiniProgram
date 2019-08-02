@@ -29,7 +29,8 @@
         wx:for="{{item1.children}}"
         wx:for-index="index2"
         wx:for-item="item2"
-        wx:key="cat_id">
+        wx:key="cat_id"
+        url="/pages/goods_list/index?cid={{item2.cat_id}}">
           <image mode="widthFix" src="{{item2.cat_icon}}" />
           <view>{{item2.cat_name}}</view>
         </navigator>
