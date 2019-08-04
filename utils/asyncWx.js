@@ -39,3 +39,18 @@ export const chooseAddress = () => {
     });
   })
 }
+
+/* Promise 形式的 wx.showModal 模态框 */
+export const showModal = ({ content }) => {
+  return new Promise((resolve, reject) => {
+    wx.showModal({
+      title: '提示',
+      content,
+      success (res) {
+        resolve(res)
+      }
+    })
+  })
+}
+
+

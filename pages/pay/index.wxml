@@ -1,2 +1,61 @@
-<!--pages/pay/index.wxml-->
-<text>pages/pay/index.wxml</text>
+<view class="address_wrap">
+  <view class="address_add" wx:if="{{!address.all}}">
+    <button bindtap="handleChooseAddress">+添加收货地址</button>
+  </view>
+  <view class="address_contact_wrap" wx:else>
+    <view class="address_contact">
+      <view>收货人: {{address.userName}}</view>
+      <view class="address_name">{{address.all}}</view>
+    </view>
+    <view class="address_tel">{{address.telNumber}}</view>
+  </view>
+</view>
+<!-- 商品 -->
+<view class="cart_main">
+  <view class="cart_title">购物车</view>
+  <view class="cart_content">
+    <view class="cart_item"
+    wx:for="{{cart}}"
+    wx:for-index="key"
+    wx:for-item="value"
+    wx:key="goods_id">
+      <!-- 复选框 -->
+      <view class="cart_check">
+        <checkbox-group bindchange="handleCheck" data-id="{{value.goods_id}}" >
+          <checkbox color="red" checked="{{value.checked}}"/>
+        </checkbox-group>
+      </view>
+      <!-- 图片 -->
+      <view class="cart_goods_img">
+        <image mode="widthFix" src="{{value.goods_small_logo}}"/>
+      </view>
+      <!-- 商品信息 -->
+      <view class="cart_goods_info">
+        <view class="goods_name">{{value.goods_name}}</view>
+        <view class="goods_price_wrap">
+          <view class="goods_price">￥{{value.goods_price}}</view>
+          <view class="goods_num_tool">
+            <text class="goods_num_edit"  bindtap="handleEditNum" 
+            data-operation="{{-1}}" data-id="{{value.goods_id}}">-</text>
+            <text class="goods_num">{{value.num}}</text>
+            <text class="goods_num_edit"  bindtap="handleEditNum" 
+            data-operation="{{1}}" data-id="{{value.goods_id}}">+</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 底部工具栏 -->
+<view class="cart_foot-tool">
+  <view class="all_check_wrap">
+    <checkbox-group bindchange="handleAllCheck">
+      <checkbox  color="red" checked="{{isAllChecked}}"/>全选
+    </checkbox-group>
+  </view>
+  <view class="total_price_wrap">
+    <view class="total_price">合计: <text>￥{{totalPrice}}</text></view>
+    <view class="freight_tips">包含运费</view>
+  </view>
+  <view class="cart_pay" bindtap="handlePay">结算({{totalNum}})</view>
+</view>

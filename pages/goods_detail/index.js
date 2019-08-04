@@ -47,6 +47,7 @@ Page({
       // 还没存在购物车
       cart[this.goodsObj.goods_id] = this.goodsObj
       cart[this.goodsObj.goods_id].num = 1
+      cart[this.goodsObj.goods_id].checked = true
     }
     setStorageCart(cart)
     wx.showToast({

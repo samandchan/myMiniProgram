@@ -21,8 +21,8 @@
     wx:key="goods_id">
       <!-- 复选框 -->
       <view class="cart_check">
-        <checkbox-group >
-          <checkbox color="red"/>
+        <checkbox-group bindchange="handleCheck" data-id="{{value.goods_id}}" >
+          <checkbox color="red" checked="{{value.checked}}"/>
         </checkbox-group>
       </view>
       <!-- 图片 -->
@@ -35,9 +35,11 @@
         <view class="goods_price_wrap">
           <view class="goods_price">￥{{value.goods_price}}</view>
           <view class="goods_num_tool">
-            <text class="goods_num_edit">-</text>
+            <text class="goods_num_edit"  bindtap="handleEditNum" 
+            data-operation="{{-1}}" data-id="{{value.goods_id}}">-</text>
             <text class="goods_num">{{value.num}}</text>
-            <text class="goods_num_edit">+</text>
+            <text class="goods_num_edit"  bindtap="handleEditNum" 
+            data-operation="{{1}}" data-id="{{value.goods_id}}">+</text>
           </view>
         </view>
       </view>
@@ -47,13 +49,13 @@
 <!-- 底部工具栏 -->
 <view class="cart_foot-tool">
   <view class="all_check_wrap">
-    <checkbox-group >
-      <checkbox  color="red"/>全选
+    <checkbox-group bindchange="handleAllCheck">
+      <checkbox  color="red" checked="{{isAllChecked}}"/>全选
     </checkbox-group>
   </view>
   <view class="total_price_wrap">
-    <view class="total_price">合计: <text>￥999999</text></view>
+    <view class="total_price">合计: <text>￥{{totalPrice}}</text></view>
     <view class="freight_tips">包含运费</view>
   </view>
-  <view class="cart_pay">结算(10)</view>
+  <view class="cart_pay" bindtap="handlePay">结算({{totalNum}})</view>
 </view>

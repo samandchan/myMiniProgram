@@ -88,6 +88,7 @@ page {
   justify-content: center;
   align-items: center;
   border-top: 2rpx solid #ccc;
+  background-color: #fff;
 }
 .cart_foot-tool .all_check_wrap {
   flex: 2;
