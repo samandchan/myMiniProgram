@@ -1,9 +1,3 @@
-.address_wrap .address_add {
-  padding: 20rpx 0;
-}
-.address_wrap .address_add button {
-  width: 40%;
-}
 .address_wrap .address_contact_wrap {
   display: flex;
   padding: 20rpx;
@@ -110,7 +104,7 @@ page {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 3;
+  flex: 2;
   height: 100%;
   background-color: orangered;
   color: #fff;
