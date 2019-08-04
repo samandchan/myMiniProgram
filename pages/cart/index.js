@@ -2,7 +2,9 @@ import regeneratorRuntime from '../../lib/runtime/runtime'
 import { openSetting, getSetting, chooseAddress } from '../../utils/asyncWx'
 Page({
   data: {
-    address: {}
+    address: {},
+    // 购物车商品
+    cart: {}
   },
   async handleChooseAddress() {
     const res1 = await getSetting()
@@ -21,7 +23,8 @@ Page({
   },
   onShow() {
     this.setData({
-      address: wx.getStorageSync('address') || {}
+      address: wx.getStorageSync('address') || {},
+      cart: wx.getStorageSync('cart') || {}
     })
   },
 

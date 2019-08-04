@@ -29,7 +29,7 @@ Page({
   },
   // 预览图片
   handlePreviewImage(e) {
-    console.log(e);
+    // console.log(e);
     const { index } = e.currentTarget.dataset
     const urls = this.data.goodsInfo.pics.map(v=>v.pics_big)
     wx.previewImage({
@@ -53,6 +53,16 @@ Page({
       title: '成功加入购物车',
       mask: true
     });
-  }
+  },
+
+  // onReady () {
+  //   this.videoContext = wx.createVideoContext('myVideo')
+  // },
+  // //全屏播放视频
+  // bofang() {
+  //   console.log(this);
+  //   console.log(this.videoContext);
+  //   this.videoContext.requestFullScreen()
+  // }
 
 })
