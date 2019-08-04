@@ -20,7 +20,7 @@ Page({
       await openSetting()
     }
     const res2 = await chooseAddress() 
-    console.log(res2);
+    // console.log(res2);
     res2.all = res2.provinceName + res2.cityName + res2.countyName + res2.detailInfo
     wx.setStorageSync('address', res2);
     this.setData({
