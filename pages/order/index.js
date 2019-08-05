@@ -1,66 +1,59 @@
-// pages/order/index.js
+import regeneratorRuntime from '../../lib/runtime/runtime'
+import { request } from '../../request/index.js'
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    tabs: [
+      {id: 0, title: '全部', isActive: true},
+      {id: 1, title: '待付款', isActive: false},
+      {id: 2, title: '待发货', isActive: false},
+      {id: 3, title: '退款/退货', isActive: false}
+    ],
+    // 订单
+    orderList: []
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  // 子组件触发的事件
+  handleItemChange(e) {
+    // console.log(e);
+    const { index } = e.detail;
+    const { tabs } = this.data;
+    tabs.forEach((v, i) => {
+      index === i ? v.isActive =  true : v.isActive = false;
+    })
+    this.setData({
+      tabs
+    })
+    // 获取订单
+    this.getOrderList(index + 1)
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onLoad(options) {
+    console.log(options);
+    this.getOrderList(options.type)
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  onShow() {
+    // console.log(this);
+    // this.getOrderList(2)
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  // 定义 获取订单 方法
+  async getOrderList(type) {
+    // 先判断token
+    let token = wx.getStorageSync('token');
+    if(!token) {
+      wx.navigateTo({
+        url: '/pages/auth/index'
+      });
+      return
+    }
+    let { orders } = await request({
+      url: '/my/orders/all',
+      header: {Authorization: token },
+      data: {type}
+    })
+    orders.forEach(v => {
+      v.create_time_format = (new Date(v.create_time * 1000)).toLocaleString()
+    })
+    // console.log(res);
+    this.setData({
+      orderList: orders
+    })
   }
 })

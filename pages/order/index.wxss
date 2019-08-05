@@ -1,1 +1,16 @@
-/* pages/order/index.wxss */
+.all_order_wrap .order_item {
+  border-bottom: 2rpx solid #ccc;
+  background-color: #f4f4f4;
+}
+.all_order_wrap .order_item .order_num,
+.all_order_wrap .order_item .order_price,
+.all_order_wrap .order_item .order_date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rpx 20rpx;
+  font-size: 28rpx;
+}
+.all_order_wrap .order_item .order_price .price {
+  color: var(--themeColor);
+}

@@ -1,2 +1,7 @@
-<!--pages/user/index.wxml-->
-<text>pages/user/index.wxml</text>
+<view class="user_img_wrap">
+  <image src="" />
+  <view class="user_info_wrap">
+    <image src="" />
+    <view class="user_nickname"></view>
+  </view>
+</view>
