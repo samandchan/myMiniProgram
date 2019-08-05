@@ -1,9 +1,5 @@
 <Tabs tabsdata="{{tabs}}" binditemChange="handleItemChange">
-  <block wx:if="{{item2.isActive}}"
-  wx:for="{{tabs}}"
-  wx:for-index="index2"
-  wx:for-item="item2"
-  wx:key="id">
+  
     <view class="all_order_wrap">
       <view class="order_item"
         wx:for="{{orderList}}"
@@ -23,7 +19,7 @@
         </view>
       </view>
     </view>
-  </block>
+
 
   <!-- <block wx:elif="{{tabs[1].isActive}}">1</block>
   <block wx:elif="{{tabs[2].isActive}}">2</block>

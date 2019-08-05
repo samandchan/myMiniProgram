@@ -1,7 +1,80 @@
 <view class="user_img_wrap">
-  <image src="" />
+  <image class="user_img_bg" src="{{userInfo.avatarUrl}}" />
   <view class="user_info_wrap">
-    <image src="" />
-    <view class="user_nickname"></view>
+    <image src="{{userInfo.avatarUrl}}" />
+    <view class="user_nickname">{{userInfo.nickName}}</view>
+  </view>
+</view>
+
+<view class="user_content">
+  <view class="user_main">
+    <!-- 收藏 -->
+    <view class="collect_wrap">
+      <navigator class="collect_item">
+        <text>0</text>
+        <view class="collect_name">收藏的店铺</view>
+      </navigator>
+      <navigator class="collect_item" url="/pages/collect/index">
+        <text>0</text>
+        <view class="collect_name">收藏的商品</view>
+      </navigator>
+      <navigator class="collect_item">
+        <text>0</text>
+        <view class="collect_name">关注的商品</view>
+      </navigator>
+      <navigator class="collect_item">
+        <text>0</text>
+        <view class="collect_name">我的足迹</view>
+      </navigator>
+    </view>
+    <!-- 订单 -->
+    <view class="order_wrap">
+      <view class="order_title">我的订单</view>
+      <view class="order_content">
+        <navigator class="order_item" url="/pages/order/index?type=1">
+        <text class="iconfont icon-ding_dan"></text>
+        <view class="order_name">全部订单</view>
+      </navigator>
+      <navigator class="order_item" url="/pages/order/index?type=2">
+        <text class="iconfont icon-fukuantongzhi"></text>
+        <view class="order_name">待付款</view>
+      </navigator>
+      <navigator class="order_item" url="/pages/order/index?type=3">
+        <text class="iconfont icon-receipt-address"></text>
+        <view class="order_name">待收货</view>
+      </navigator>
+      <navigator class="order_item">
+        <text class="iconfont icon-tuihuotuikuan_dianpu"></text>
+        <view class="order_name">退款/退货</view>
+      </navigator>
+      </view>
+    </view>
+    <!-- 地址 -->
+    <view class="address_wrap">
+      <view class="address_name">收货地址管理</view>
+      <text>></text>
+    </view>
+    <!-- other -->
+    <view class="other_wrap">
+      <view class="other_item">
+        <view class="other_name">联系客服</view>
+        <text>400-618-888</text>
+      </view>
+      <view class="other_item">
+        <view class="other_name">意见反馈</view>
+        <text class="icon">></text>
+      </view>
+      <view class="other_item">
+        <view class="other_name">关于我们</view>
+        <text class="icon">></text>
+      </view>
+    </view>
+    <!-- 分享 -->
+    <view class="share_wrap">
+      <view class="share-item">
+        <view class="share_name">把应用推荐给其他人</view>
+        <text class="icon">></text>
+      </view>
+    </view>
   </view>
 </view>
