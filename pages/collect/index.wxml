@@ -1,1 +1,21 @@
+<Tabs tabsdata="{{tabs}}" binditemChange="handleItemChange">
+  <view class="tag_wrap">
+    <view class="tag active">全部</view>
+    <view class="tag">正在热卖</view>
+    <view class="tag">即将上线</view>
+  </view>
+  <view class="goods_wrap">
+    <view class="goods_item"
+    wx:for="{{collectGoods}}"
+    wx:key="goods_id">
+      <view class="goods_img">
+        <image mode="widthFix" src="{{item.goods_small_logo}}" />
+      </view>
+      <view class="goods_name_wrap">
+        <view class="goods_name">{{item.goods_name}}</view>
+        <view class="goods_price">￥{{item.goods_price}}</view>
+      </view>
+    </view>
+  </view>
+</Tabs>
 

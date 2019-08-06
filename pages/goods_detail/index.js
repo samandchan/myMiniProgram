@@ -3,7 +3,9 @@ import regeneratorRuntime from '../../lib/runtime/runtime'
 import { getStorageCart, setStorageCart } from '../../utils/storage.js'
 Page({
   data: {
-    goodsInfo: {}
+    goodsInfo: {},
+    // 是否收藏
+    isCollected: false
   },
   goodsObj: {},
   onLoad(options) {
@@ -18,13 +20,21 @@ Page({
     })
     this.goodsObj = result;
     // console.log(result);
+    
+    // 判断是否收藏
+    let collect = wx.getStorageSync('collect') || [];
+    let isCollected = collect.some(v => {
+      return v.goods_id === this.goodsObj.goods_id
+    })
+
     this.setData({
       goodsInfo: {
         goods_name: result.goods_name,
         goods_price: result.goods_price,
         goods_introduce: result.goods_introduce.replace(/\.webp/g, '.jpg'),
         pics: result.pics
-      }
+      },
+      isCollected
     })
   },
   // 预览图片
@@ -66,4 +76,30 @@ Page({
   //   this.videoContext.requestFullScreen()
   // }
 
+  // 收藏
+  handleCollected() {
+    let collect = wx.getStorageSync('collect') || [];
+    // let isCollected = collect.some(v => {
+    //   return v.goods_id === this.data.goodsObj.goods_id
+    // })
+    let index = collect.findIndex(v => {
+      return v.goods_id === this.goodsObj.goods_id
+    })
+    let text = index > -1 ? '取消收藏' : '成功收藏'
+    if(index > -1) {
+      collect.splice(index, 1)
+    }else {
+      collect.push(this.goodsObj)
+    }
+    wx.showToast({
+      title: text,
+      icon: 'success',
+      mask: true
+    });
+    
+    wx.setStorageSync('collect', collect);
+    this.setData({
+      isCollected: !this.data.isCollected
+    })
+  }
 })

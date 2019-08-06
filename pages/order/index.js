@@ -15,6 +15,12 @@ Page({
   handleItemChange(e) {
     // console.log(e);
     const { index } = e.detail;
+    this.setActive(index)
+    // 获取订单
+    this.getOrderList(index + 1)
+  },
+  // 定义 高亮当前标题 方法
+  setActive(index) {
     const { tabs } = this.data;
     tabs.forEach((v, i) => {
       index === i ? v.isActive =  true : v.isActive = false;
@@ -22,11 +28,10 @@ Page({
     this.setData({
       tabs
     })
-    // 获取订单
-    this.getOrderList(index + 1)
   },
   onLoad(options) {
     console.log(options);
+    this.setActive(options.type - 1)
     this.getOrderList(options.type)
   },
   onShow() {

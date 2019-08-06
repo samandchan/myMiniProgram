@@ -15,7 +15,7 @@
         <view class="collect_name">收藏的店铺</view>
       </navigator>
       <navigator class="collect_item" url="/pages/collect/index">
-        <text>0</text>
+        <text>{{ collection }}</text>
         <view class="collect_name">收藏的商品</view>
       </navigator>
       <navigator class="collect_item">

@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 7,
 			"list": [
 				{
 					"id": -1,
@@ -96,6 +96,13 @@
 					"id": -1,
 					"name": "个人中心",
 					"pathName": "pages/user/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "商品收藏",
+					"pathName": "pages/collect/index",
 					"query": "",
 					"scene": null
 				}

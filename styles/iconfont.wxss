@@ -50,3 +50,6 @@
 .icon-tuihuotuikuan_dianpu:before {
   content: "\e773";
 }
+.icon-shoucang1 {
+  color: orangered;
+}

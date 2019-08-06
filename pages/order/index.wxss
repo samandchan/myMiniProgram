@@ -9,7 +9,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 6rpx 20rpx;
-  font-size: 28rpx;
+  font-size: 24rpx;
 }
 .all_order_wrap .order_item .order_price .price {
   color: var(--themeColor);
